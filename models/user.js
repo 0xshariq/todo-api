@@ -13,11 +13,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     select: false,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-});
+  }
+}, {timestamps: true});
 
 export const User = new mongoose.model("User", userSchema);
