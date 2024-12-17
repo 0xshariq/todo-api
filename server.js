@@ -4,7 +4,7 @@ import { app } from "./app.js";
 import { connectDB } from "./db/database.js";
 
 config({
-  path: "./db/config.env",
+  path: "./config.env",
 });
 connectDB();
 
