@@ -40,10 +40,15 @@ export const login = async (req, res, next) => {
 };
 
 export const logout = (req, res) => {
-  res.clearCookie("token").json({
-    success: true,
-    message: "Logout successful",
-  });
+  res
+    .clearCookie("token", {
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      secure: process.env.NODE_ENV === "production" ? true : false,
+    })
+    .json({
+      success: true,
+      message: "Logout successful",
+    });
 };
 
 export const register = async (req, res, next) => {
@@ -61,7 +66,7 @@ export const register = async (req, res, next) => {
 
     const salt = await bcrypt.genSalt(10);
     const hashPassword = await bcrypt.hash(password, salt);
-    
+
     user = await User.create({
       name,
       email,
