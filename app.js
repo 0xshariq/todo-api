@@ -12,7 +12,7 @@ app.use(express.json()); // This will parse the incoming request body to json
 app.use(cookieParser()); // This will parse the incoming cookie header to json
 app.use(
   cors({
-    origin: ["http://localhost:4000", process.env.FRONTEND_URL],
+    origin: ["http://localhost:5173", process.env.FRONTEND_URL],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
